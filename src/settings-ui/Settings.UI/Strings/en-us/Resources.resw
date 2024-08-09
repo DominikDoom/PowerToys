@@ -3072,7 +3072,7 @@ Right-click to remove the key combination, thereby deactivating the shortcut.</v
 	<value>Maximum window size</value>
   </data>
   <data name="Peek_MaxWindowSize.Description" xml:space="preserve">
-	<value>Maximum startup size of the Peek window in pixels. Set to 0 to disable.</value>
+	<value>Maximum startup size of the Peek window in pixels. Set to 0 to disable the limit for that axis.</value>
     <comment>Peek is a product name, do not loc</comment>
   </data>
   <data name="Peek_MaxWindowWidth.Header" xml:space="preserve">
