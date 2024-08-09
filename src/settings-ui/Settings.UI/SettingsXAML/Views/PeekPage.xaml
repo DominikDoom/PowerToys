@@ -38,6 +38,24 @@
                     <tkcontrols:SettingsCard x:Uid="Peek_CloseAfterLosingFocus" HeaderIcon="{ui:FontIcon Glyph=&#xED1A;}">
                         <ToggleSwitch x:Uid="ToggleSwitch" IsOn="{x:Bind ViewModel.CloseAfterLosingFocus, Mode=TwoWay}" />
                     </tkcontrols:SettingsCard>
+                    <tkcontrols:SettingsCard x:Uid="Peek_MaxWindowSize" HeaderIcon="{ui:FontIcon Glyph=&#xE740;}">
+                        <StackPanel Orientation="Horizontal" Spacing="12">
+                            <NumberBox x:Uid="Peek_MaxWindowWidth"
+                                       MinWidth="{StaticResource SettingActionControlMinWidth}"
+                                       Minimum="0"
+                                       SmallChange="5"
+                                       LargeChange="50"
+                                       SpinButtonPlacementMode="Compact"
+                                       Value="{x:Bind ViewModel.MaxWindowWidth, Mode=TwoWay}" />
+                            <NumberBox x:Uid="Peek_MaxWindowHeight"
+                                       MinWidth="{StaticResource SettingActionControlMinWidth}"
+                                       Minimum="0"
+                                       SmallChange="5"
+                                       LargeChange="50"
+                                       SpinButtonPlacementMode="Compact"
+                                       Value="{x:Bind ViewModel.MaxWindowHeight, Mode=TwoWay}" />
+                        </StackPanel>
+                    </tkcontrols:SettingsCard>
                 </controls:SettingsGroup>
 
                 <controls:SettingsGroup x:Uid="Peek_Preview_GroupSettings" IsEnabled="{x:Bind ViewModel.IsEnabled, Mode=OneWay}">

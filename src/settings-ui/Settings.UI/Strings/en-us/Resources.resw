@@ -3068,6 +3068,19 @@ Right-click to remove the key combination, thereby deactivating the shortcut.</v
     <value>Automatically close the Peek window after it loses focus</value>
     <comment>Peek is a product name, do not loc</comment>
   </data>
+  <data name="Peek_MaxWindowSize.Header" xml:space="preserve">
+	<value>Maximum window size</value>
+  </data>
+  <data name="Peek_MaxWindowSize.Description" xml:space="preserve">
+	<value>Maximum startup size of the Peek window in pixels. Set to 0 to disable.</value>
+    <comment>Peek is a product name, do not loc</comment>
+  </data>
+  <data name="Peek_MaxWindowWidth.Header" xml:space="preserve">
+	<value>Width</value>
+  </data>
+  <data name="Peek_MaxWindowHeight.Header" xml:space="preserve">
+	<value>Height</value>
+  </data>
   <data name="FancyZones_DisableRoundCornersOnWindowSnap.Content" xml:space="preserve">
     <value>Disable round corners when window is snapped</value>
   </data>

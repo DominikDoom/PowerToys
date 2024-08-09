@@ -23,6 +23,10 @@ namespace Peek.UI
 
         public bool CloseAfterLosingFocus { get; private set; }
 
+        public int MaxWindowWidth { get; private set; }
+
+        public int MaxWindowHeight { get; private set; }
+
         public UserSettings()
         {
             _settingsUtils = new SettingsUtils();
@@ -57,6 +61,8 @@ namespace Peek.UI
                         if (settings != null)
                         {
                             CloseAfterLosingFocus = settings.Properties.CloseAfterLosingFocus.Value;
+                            MaxWindowWidth = settings.Properties.MaxWindowWidth;
+                            MaxWindowHeight = settings.Properties.MaxWindowHeight;
                         }
 
                         retry = false;

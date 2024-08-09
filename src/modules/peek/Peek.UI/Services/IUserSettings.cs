@@ -7,5 +7,9 @@ namespace Peek.UI
     public interface IUserSettings
     {
         public bool CloseAfterLosingFocus { get; }
+
+        public int MaxWindowWidth { get; }
+
+        public int MaxWindowHeight { get; }
     }
 }

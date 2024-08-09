@@ -145,6 +145,34 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
             }
         }
 
+        public int MaxWindowWidth
+        {
+            get => _peekSettings.Properties.MaxWindowWidth;
+            set
+            {
+                if (_peekSettings.Properties.MaxWindowWidth != value)
+                {
+                    _peekSettings.Properties.MaxWindowWidth = value;
+                    OnPropertyChanged(nameof(MaxWindowWidth));
+                    NotifySettingsChanged();
+                }
+            }
+        }
+
+        public int MaxWindowHeight
+        {
+            get => _peekSettings.Properties.MaxWindowHeight;
+            set
+            {
+                if (_peekSettings.Properties.MaxWindowHeight != value)
+                {
+                    _peekSettings.Properties.MaxWindowHeight = value;
+                    OnPropertyChanged(nameof(MaxWindowHeight));
+                    NotifySettingsChanged();
+                }
+            }
+        }
+
         public bool SourceCodeWrapText
         {
             get => _peekPreviewSettings.SourceCodeWrapText.Value;

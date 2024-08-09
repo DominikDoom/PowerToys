@@ -17,6 +17,9 @@ namespace Microsoft.PowerToys.Settings.UI.Library
             ActivationShortcut = DefaultActivationShortcut;
             AlwaysRunNotElevated = new BoolProperty(true);
             CloseAfterLosingFocus = new BoolProperty(false);
+
+            MaxWindowWidth = 0;
+            MaxWindowHeight = 0;
         }
 
         public HotkeySettings ActivationShortcut { get; set; }
@@ -24,6 +27,12 @@ namespace Microsoft.PowerToys.Settings.UI.Library
         public BoolProperty AlwaysRunNotElevated { get; set; }
 
         public BoolProperty CloseAfterLosingFocus { get; set; }
+
+        [CmdConfigureIgnore]
+        public int MaxWindowWidth { get; set; }
+
+        [CmdConfigureIgnore]
+        public int MaxWindowHeight { get; set; }
 
         public override string ToString() => JsonSerializer.Serialize(this);
     }

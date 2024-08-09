@@ -29,6 +29,8 @@ namespace Peek.UI
 
         private readonly ThemeListener? themeListener;
 
+        private IUserSettings? UserSettings { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -92,10 +94,10 @@ namespace Peek.UI
 
         private void PeekWindow_Activated(object sender, WindowActivatedEventArgs args)
         {
+            UserSettings = Application.Current.GetService<IUserSettings>();
             if (args.WindowActivationState == WindowActivationState.Deactivated)
             {
-                var userSettings = Application.Current.GetService<IUserSettings>();
-                if (userSettings.CloseAfterLosingFocus)
+                if (UserSettings.CloseAfterLosingFocus)
                 {
                     Uninitialize();
                 }
@@ -159,7 +161,24 @@ namespace Peek.UI
             // TODO: Investigate why portrait images do not perfectly fit edge-to-edge --> WindowHeightContentPadding can be 0 (or close to that) if custom? [Jay]
             Size monitorMinContentSize = GetMonitorMinContentSize(monitorScale);
             Size monitorMaxContentSize = GetMonitorMaxContentSize(monitorSize, monitorScale);
-            Size adjustedContentSize = scaledRequestedSize.Fit(monitorMaxContentSize, monitorMinContentSize);
+
+            // Max width and height specified by the user in settings
+            var settingsMaxWidth = UserSettings?.MaxWindowWidth ?? 0d;
+            var settingsMaxHeight = UserSettings?.MaxWindowHeight ?? 0d;
+
+            // 0 == disabled, so use monitorMaxContentSize instead
+            if (settingsMaxWidth <= 0)
+            {
+                settingsMaxWidth = monitorMaxContentSize.Width;
+            }
+
+            if (settingsMaxHeight <= 0)
+            {
+                settingsMaxHeight = monitorMaxContentSize.Height;
+            }
+
+            Size maxContentSize = new(Math.Min(monitorMaxContentSize.Width, settingsMaxWidth), Math.Min(monitorMaxContentSize.Height, settingsMaxHeight));
+            Size adjustedContentSize = scaledRequestedSize.Fit(maxContentSize, monitorMinContentSize);
 
             var titleBarHeight = TitleBarControl.ActualHeight;
             var desiredWindowWidth = adjustedContentSize.Width;
